@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('upload',[\App\Http\Controllers\UploadController::class, 'store']);
+Route::patch('upload',[\App\Http\Controllers\UploadController::class, 'update']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
